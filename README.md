@@ -1,6 +1,9 @@
-# Exploring Temporal Coherence for More General Video Face Forgery Detection(FTCN)
+# Exploring Temporal Coherence for More General Video Face Forgery Detection(FTCN) 
 
 Yinglin Zheng, Jianmin Bao, Dong Chen, Ming Zeng, Fang Wen
+
+Accepted by ICCV 2021
+
 ### [Paper](https://arxiv.org/abs/2108.06693)  
 
 ## Abstract
@@ -19,7 +22,7 @@ pip install -r requirements.txt
 # Test
 
 ## Inference Using Pretrained Model on Raw Video
-Download pretrained `FTCN+TT` model from [here]() and place it under `./checkpoints` folder
+Download `FTCN+TT` model trained on FF++ from [here](https://github.com/yinglinzheng/FTCN/releases/download/weights/ftcn_tt.pth) and place it under `./checkpoints` folder
 ```bash
 python test_on_raw_video.py examples/shining.mp4 output
 ```
