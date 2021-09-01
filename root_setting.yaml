@@ -1,0 +1,192 @@
+# this is the root setting of all setting and will be loaded in first place
+# the loading sequence is root_setting -> specific setting
+# -> manully overided setting -> computed setting  in finalize_config() 
+# which means access config before finalize can be dangerous
+# always remember to add a space after :
+
+setting_name: base
+test_dataset_type: null
+clip_size: 8
+var_clip_size: -1
+
+model:
+  teacher: null
+  pretrained: null
+  fc_weight: null
+  fc_bias: null
+  patch:
+    name: null
+    fc_only: false
+  feat_type: image
+  tester: null
+  tester_path: null
+  tester_data_mode: null
+  decodec:
+    reg_loss_type: l1
+    feat_loss_func: l1
+    dis_model: basic
+    gan_type: vanilla
+  inco:
+    kernel_size: 1
+    pool_ref_type: sum
+    temp_kernel_size: 3
+    spatial_sizes: []
+    spatial_count: 0
+    no_time_pool: false
+    keep_stride_count: 0
+    i3d_routine: true
+    SOLVER: 
+      BASE_LR: 0.1
+      LR_POLICY: cosine
+      MAX_EPOCH: 196
+      MOMENTUM: 0.9
+      WEIGHT_DECAY: 1e-4
+      WARMUP_EPOCHS: 34.0
+      WARMUP_START_LR: 0.01
+      OPTIMIZING_METHOD: sgd
+  transformer:
+    patch_type: null #time,spatial,all
+    dim: -1
+    stop_point: 6
+    random_select: true
+    k: 8
+    sigmoid_before: false
+  denoise:
+    layers: []
+
+test_on_train: false
+
+test: false
+debug: false
+pre_load_data: false
+# for better compatiable with philly and potential running enviroment
+# all path under path should be rel_path w.r.t the config.py
+# and the abspath will be compute when finalize
+
+# python -m torch.distributed.launch  --nproc_per_node=2 main.py  --setting get_all_datas_id_emb_old.yaml main.py
+# --config trainer.default.log_step=1 trainer.default.sample_step=20
+
+trash_face: false
+
+strategies: []
+branches: ["continuous_same","continuous_diff","discontinuous"]
+epoch: -1
+
+reg_weight: 10
+class_weight: 1
+final_weight: 1
+feat_weight: 0
+gan_weight: 0
+
+noise_only: false
+error_only: false
+force_ds_scale: 1.0
+
+path:
+ model_dir: ../checkpoint
+ pretrain_dir: ../pretrain
+ log_dir: ../checkpoint
+ data_dir: ../data
+ precomputed_dir: ../precomputed
+ test_data_dir: null
+ extra_data_dir: ../extra_data
+ lmdb_dir: null
+
+patch_input: false
+input_noise: false
+mask_direct: false
+max_to_keep: 50
+base_count: -1
+enable_lmdb_cache: false
+
+aug_in_train: true
+aug_in_test: false
+vis_in_train: true
+
+data_mode: "image"
+data_source: "zip"
+
+aug:
+ flip_prob: 0
+ reverse_prob: 0
+ gray_prob: 0
+ size_aug_prob: 0
+ quantify_prob: 0
+ quantify_steps: [16,32]
+ min_size: 64
+ max_size: 256
+ jpeg_aug_prob: 0
+ dxy_gauss_prob: 0
+ dxy_gauss_scale: 0
+ min_quality: 60
+ max_quality: 100
+ gaussain: false
+ need_img_degrade: true
+ need_mask_distortion: true
+ need_color_match: true
+ feather_range: [0.2,0.2]
+ adaptive_clip_size: false
+ clip_sizes: null
+ cutout: 0
+ earse: 0
+ types: null
+ earse_type: null
+ time_earse_prob: 0
+ time_earse_type: null
+ jitter_prob: 0
+ test_types: null
+ raw_prob: 0
+ bi_types: null
+ bi_count: 1
+ face_sources: null
+ inplace_types: null
+ no_poisson_prob: 0
+ blend:
+  pseudo_prob: 0.5
+  from_real_prob: 1
+  skip_prob: 0
+  shuffle_prob: 0
+  multi_prob: 0
+  multi_config:
+    from_real_prob: 1
+    self_prob: 1
+    self:
+      one: 0
+      continuity: 1
+    other:
+      one: 0
+      all: 0
+      continuity: 1
+  celeb_prob: 0
+  fft:
+    type: null
+  fad:
+    type: null
+    flag: high
+  tta:
+    type: null
+    param: null
+
+
+batch_size: 64
+test_batch_size: 64
+imsize: 256
+next_frame_rate: 0.5
+trainer:
+ default:
+  apex_option: O0
+  n_worker: 12
+  optim: adam
+  model_save_step: 1000
+  log_step: 25
+  sample_step: 1000
+  init_lr: 3e-4
+  validation_step: 5000
+  test_sample_step: 20
+  one_test_step: 500
+  test_freq: 1
+  total_step: 100000
+  lr_step: 20000
+  freeze_backbone_step: 0
+  total_epoch: 200
+fetch_method: prefetch

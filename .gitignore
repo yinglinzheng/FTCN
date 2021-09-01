@@ -1,0 +1,8 @@
+checkpoints/
+*.py[cod]
+*.pyc.*
+*$py.class
+.vscode/
+output/
+examples/*.pth
+*/__pycache__/
