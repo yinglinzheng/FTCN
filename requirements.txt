@@ -6,13 +6,11 @@ contexttimer
 sklearn
 imgaug
 prettytable
-vcg
 simplejson
 fvcore
 ffmpeg-python
 tabulate
 pandas
-inplace_abn
 scipy==1.5.3
 lmdb
 PyTurboJPEG
