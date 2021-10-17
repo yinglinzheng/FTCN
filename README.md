@@ -50,10 +50,11 @@ The face alignment network comes from [cunjian/pytorch_face_landmark](https://gi
 # Citation
 If you use this code for your research, please cite our paper.
 ```
-@article{zheng2021exploring,
+@inproceedings{zheng2021exploring,
   title={Exploring Temporal Coherence for More General Video Face Forgery Detection},
   author={Zheng, Yinglin and Bao, Jianmin and Chen, Dong and Zeng, Ming and Wen, Fang},
-  journal={arXiv preprint arXiv:2108.06693},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={15044--15054},
   year={2021}
 }
 ```
