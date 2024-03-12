@@ -131,7 +131,7 @@ if __name__ == "__main__":
             assert len(post_module) == pad_length
 
             pre_module = inner_index + inner_index[1:-1][::-1]
-            l_pre = len(post_module)
+            l_pre = len(pre_module)
             pre_module = pre_module * (pad_length // l_pre + 1)
             pre_module = pre_module[-pad_length:]
             assert len(pre_module) == pad_length
